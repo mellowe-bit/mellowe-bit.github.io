@@ -1067,6 +1067,224 @@ body::after {
 }
 
 /* ══════════════════════════════════════
+   WELLNESS WHEEL
+══════════════════════════════════════ */
+.wheel-section {
+  padding: 10rem 6vw;
+  background: var(--parchment);
+}
+
+.wheel-inner { max-width: 1100px; margin: 0 auto; }
+
+.wheel-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.wheel-eyebrow {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--sage-dk);
+  font-weight: 300;
+  margin-bottom: 1.6rem;
+}
+
+.wheel-h {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 3.4vw, 3.2rem);
+  font-weight: 300;
+  color: var(--brown-dp);
+  line-height: 1.22;
+  margin-bottom: 1.4rem;
+}
+
+.wheel-h em { font-style: italic; color: var(--sage-dk); }
+
+.wheel-sub {
+  font-size: 0.97rem;
+  line-height: 1.95;
+  color: var(--brown-wm);
+  font-weight: 300;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.wheel-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.wheel-slider-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.ws-item { display: flex; flex-direction: column; gap: 0.45rem; }
+
+.ws-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.ws-label {
+  font-size: 0.78rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--brown-wm);
+}
+
+.ws-val {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--sage-dk);
+  min-width: 1.2rem;
+  text-align: right;
+}
+
+input[type=range].ws-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  background: var(--parch-dk);
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type=range].ws-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--sage-dk);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 6px rgba(78,96,64,0.3);
+}
+
+input[type=range].ws-range::-webkit-slider-thumb:hover {
+  background: var(--sage);
+  transform: scale(1.25);
+}
+
+input[type=range].ws-range::-moz-range-thumb {
+  width: 16px; height: 16px;
+  border: none;
+  border-radius: 50%;
+  background: var(--sage-dk);
+  cursor: pointer;
+}
+
+.wheel-canvas-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#wellnessCanvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.wheel-reflect-btn {
+  display: block;
+  margin: 0 auto 0;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 300;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--sage-dk);
+  border: 1px solid rgba(78,96,64,0.35);
+  padding: 0.85rem 2.4rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.wheel-reflect-btn:hover {
+  background: rgba(78,96,64,0.07);
+  border-color: var(--sage-dk);
+}
+
+.wheel-result {
+  text-align: center;
+  padding: 3.5rem 0 0;
+  border-top: 1px solid rgba(196,168,130,0.2);
+  transition: opacity 0.8s ease;
+}
+
+.wheel-areas-highlight {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--sage-dk);
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+}
+
+.wheel-reflect {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--brown-wm);
+  margin-bottom: 2rem;
+  line-height: 1.75;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wheel-cta-q {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--brown-dp);
+  margin-bottom: 2.4rem;
+  line-height: 1.4;
+}
+
+.wheel-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
+  flex-wrap: wrap;
+}
+
+.wheel-no {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 200;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--tan);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.wheel-no:hover { color: var(--brown-lt); }
+
+@media (max-width: 860px) {
+  .wheel-layout {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+  .wheel-canvas-wrap { order: -1; }
+  #wellnessCanvas { width: 300px; height: 300px; }
+}
+
+/* ══════════════════════════════════════
    FOOTER
 ══════════════════════════════════════ */
 footer {
@@ -1171,7 +1389,7 @@ footer {
 <nav id="nav">
   <div class="nav-brand">mellow<em>emind</em></div>
   <ul class="nav-links">
-    <li><a href="#philosophy">Philosophy</a></li>
+    <li><a href="#assessment">Assessment</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -1187,133 +1405,61 @@ footer {
   <div class="hero-arc"></div>
 
   <div class="hero-inner">
-    <span class="hero-tag">A Personal Coaching Sanctuary</span>
+    <span class="hero-tag">National Board Certified Health &amp; Wellness Coach</span>
 
     <h1>
-      You are exactly<br>where you need to be.
+      Personal health &amp;<br><em>wellness coaching.</em>
     </h1>
 
     <p class="hero-sub">
-      Pause. Reflect. Begin listening.
+      I help you build sustainable habits, manage stress, and reconnect with your body — through personalized coaching grounded in lived experience and professional training.
     </p>
 
     <div class="hero-cta-group">
       <a href="https://calendar.app.google/VHotFD84HaVg54jX7" target="_blank" rel="noopener"><button class="btn-primary">Book a Discovery Call</button></a>
-      <span class="hero-np">No pressure. Just a conversation.</span>
+      <span class="hero-np">Free 30-minute call. No commitment required.</span>
     </div>
-
-    <span class="hero-cred">National Board Certified Health &amp; Wellness Coach</span>
 
     <div class="hero-line"></div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     MARQUEE STRIP
-══════════════════════════════════════ -->
-<div class="phi-strip" aria-hidden="true">
-  <div class="phi-track">
-    <!-- set A -->
-    <span class="phi-item">Slow down to reconnect</span>
-    <span class="phi-dot"></span>
-    <span class="phi-item">Your body is not the enemy — it is the messenger</span>
-    <span class="phi-dot"></span>
-    <span class="phi-item">Rest is not a reward. It is a requirement.</span>
-    <span class="phi-dot"></span>
-    <span class="phi-item">Wellbeing is not something to earn</span>
-    <span class="phi-dot"></span>
-    <span class="phi-item">Healing begins when we learn to listen</span>
-    <span class="phi-dot"></span>
-    <!-- set B (duplicate for seamless loop) -->
-    <span class="phi-item">Slow down to reconnect</span>
-    <span class="phi-dot"></span>
-    <span class="phi-item">Your body is not the enemy — it is the messenger</span>
-    <span class="phi-dot"></span>
-    <span class="phi-item">Rest is not a reward. It is a requirement.</span>
-    <span class="phi-dot"></span>
-    <span class="phi-item">Wellbeing is not something to earn</span>
-    <span class="phi-dot"></span>
-    <span class="phi-item">Healing begins when we learn to listen</span>
-    <span class="phi-dot"></span>
-  </div>
-</div>
+
 
 <!-- ══════════════════════════════════════
-     PHILOSOPHY
+     WELLNESS WHEEL
 ══════════════════════════════════════ -->
-<section class="philosophy" id="philosophy">
-  <div class="phi-inner">
-    <span class="phi-eyebrow sr">The Guiding Belief</span>
-    <p class="phi-quote sr d1">Wellness is deeply individual.</p>
-    <div class="phi-rule sr d2"></div>
-    <p class="phi-body sr d3">
-      There is no single formula that works for every body.
-    </p>
-    <p class="phi-body sr d4" style="margin-top: 1.6rem;">
-      Real wellbeing begins when we learn how to listen to our own body's signals and apply knowledge in a way that feels supportive and sustainable.
-    </p>
-  </div>
-</section>
+<section class="wheel-section" id="assessment">
+  <div class="wheel-inner">
 
-<!-- ══════════════════════════════════════
-     WHO + WHAT (COMBINED)
-══════════════════════════════════════ -->
-<section class="woven-section">
-  <div class="woven-inner">
-
-    <!-- top: intro header -->
-    <div class="woven-header sr">
-      <span class="woven-eyebrow">Who I work with &amp; what I can help with</span>
-      <h2 class="woven-h">
-        If any of this feels familiar,<br>
-        <em>you are in the right place.</em>
-      </h2>
-      <p class="woven-sub">I work with individuals across different life and wellness goals — supporting them as an accountability partner through sustainable lifestyle learning, body awareness, and gentle progression toward meaningful change.</p>
+    <div class="wheel-header sr">
+      <span class="wheel-eyebrow">Self-Assessment</span>
+      <h2 class="wheel-h">Is this <em>right for you?</em></h2>
+      <p class="wheel-sub">Rate your current satisfaction in each area of wellness — from 1 (needs attention) to 10 (thriving). There are no right or wrong answers, just an honest moment to check in.</p>
     </div>
 
-    <!-- middle: two-column layout -->
-    <div class="woven-cols">
-
-      <!-- left: who -->
-      <div class="woven-who sr d1">
-        <span class="woven-col-label">Who I work with</span>
-        <div class="woven-tag-cloud">
-          <span class="woven-tag">Overthinkers</span>
-          <span class="woven-tag">High performers</span>
-          <span class="woven-tag">Those navigating burnout</span>
-          <span class="woven-tag">Women in transition</span>
-          <span class="woven-tag">Those carrying too much pressure</span>
-          <span class="woven-tag">Anyone ready to slow down</span>
-          <span class="woven-tag">Those disconnected from their body</span>
-          <span class="woven-tag">People seeking sustainable change</span>
-        </div>
+    <div class="wheel-layout">
+      <div class="wheel-slider-row sr d1" id="sliderCol"></div>
+      <div class="wheel-canvas-wrap sr d2">
+        <canvas id="wellnessCanvas" width="380" height="380"></canvas>
       </div>
-
-      <!-- divider -->
-      <div class="woven-divider sr d2" aria-hidden="true"></div>
-
-      <!-- right: what -->
-      <div class="woven-what sr d2">
-        <span class="woven-col-label">What I can help with</span>
-        <ul class="woven-list">
-          <li>Burnout Recovery</li>
-          <li>Movement &amp; Physical Goals</li>
-          <li>Lifestyle Habit Building</li>
-          <li>Stress Awareness</li>
-          <li>Women's Wellness Transitions</li>
-          <li>High Performance Sustainability</li>
-          <li>Nervous System Education</li>
-          <li>Personal Growth Alignment</li>
-          <li>Life Rhythm Adjustment</li>
-        </ul>
-      </div>
-
     </div>
 
-    <!-- bottom: quiet closing line -->
-    <p class="woven-close sr d3">
-      You do not have to have it all figured out to begin. You only need to be willing to listen.
-    </p>
+    <div style="text-align:center; margin-bottom: 2rem;">
+      <button class="wheel-reflect-btn sr d3" onclick="showWheelResult()">Reflect on my results &rarr;</button>
+    </div>
+
+    <div class="wheel-result" id="wheelResult" style="display:none; opacity:0">
+      <p class="wheel-areas-highlight" id="wheelLowAreas"></p>
+      <p class="wheel-reflect">Take a moment to look at your wheel. Notice where you feel most — and least — satisfied right now.</p>
+      <p class="wheel-cta-q">Would you like to work on any of these areas?</p>
+      <div class="wheel-btns">
+        <a href="https://calendar.app.google/VHotFD84HaVg54jX7" target="_blank" rel="noopener">
+          <button class="btn-primary">Yes — Book a Free Call</button>
+        </a>
+        <button class="wheel-no" onclick="document.getElementById('wheelResult').style.display='none'">Not right now</button>
+      </div>
+    </div>
 
   </div>
 </section>
@@ -1334,33 +1480,25 @@ footer {
     </div>
 
     <div class="text-col sr d2">
-      <span class="founder-tag">My Story</span>
+      <span class="founder-tag">About Me</span>
       <h2 class="founder-h">
-        Wellness is an oath to honor<br>
-        the relationship between<br>
-        mind, body, and soul.
+        Hi, I'm Melanie —<br>
+        a National Board Certified<br>
+        Health &amp; Wellness Coach.
       </h2>
 
       <div class="bio">
-        <p>I believe wellness is an oath to honor the relationship between mind, body, and soul.</p>
+        <p>I became a coach after my own experience with burnout. I spent years pushing myself harder — prioritizing performance over rest, and achievement over my body's actual needs. Eventually the stress caught up with me: chronic tension, exhaustion, anxiety, and a body that was signaling it needed a different approach.</p>
 
-        <p>In the past, I thought wellness meant pushing harder, moving faster, and becoming the best version of myself through performance and physical stamina. I focused on looking strong and achieving more, often at the expense of my sleep, my nervous system, and my body's deeper needs.</p>
-
-        <p><strong>Eventually, my body asked me to slow down.</strong></p>
+        <p><strong>That shift changed how I think about wellness entirely.</strong></p>
 
         <p>High stress, high cortisol, chronic tension, bloating, exhaustion, and anxiety became signals I could no longer ignore.</p>
 
-        <p>Through my own healing journey, I learned that wellness is not about forcing the body to keep up. It is about learning to move, rest, nourish, and live <em>in partnership</em> with it.</p>
+        <p>Today I work with clients who feel pulled between the pressure to keep going and the need to slow down. I combine my own lived experience with my NBC-HWC training to provide <em>practical, personalized guidance</em> — not one-size-fits-all advice.</p>
 
-        <p>As a National Board Certified Health and Wellness Coach, I work with individuals who feel caught between the pressure to keep moving and the desire to slow down and reconnect with themselves.</p>
+        <p>My approach is grounded, supportive, and focused on what actually works for your life. I help you understand what your body and stress signals are telling you, and build habits that are sustainable long-term.</p>
 
-        <p>I translate body and stress signals into simple, understandable guidance to help people learn how to listen to themselves with greater kindness.</p>
-
-        <p>I combine lived experience with coaching structure to create a space where individuals can feel safe, seen, and supported as they rediscover what their body and mind may need.</p>
-
-        <p>I want the people I work with to feel lighter, more connected, and more certain that <strong>their wellbeing is not something to earn, but something that already lives within them.</strong></p>
-
-        <p><em>My role is not to fix you. It is to help you remember how to listen to yourself.</em></p>
+        <p><strong>My goal is to help you feel more in control, more energized, and more confident in your own health decisions.</strong></p>
       </div>
 
       <div class="founder-sig">mellowemind</div>
@@ -1379,12 +1517,10 @@ footer {
 
   <div class="close-inner">
     <h2 class="sr">
-      Your body is not the enemy.<br>
-      <em>It is the messenger.</em>
+      Ready to <em>get started?</em>
     </h2>
     <p class="close-body sr d1">
-      If you are ready to listen, I am here.<br>
-      No urgency. No performance required.
+      Book a free 30-minute discovery call. We'll talk through your goals and see if we're a good fit — no commitment needed.
     </p>
     <a href="https://calendar.app.google/VHotFD84HaVg54jX7" target="_blank" rel="noopener">
       <button class="btn-light sr d2">Book a Discovery Call</button>
@@ -1399,7 +1535,7 @@ footer {
   <div class="contact-inner">
     <span class="contact-eyebrow sr">Get in Touch</span>
     <h2 class="contact-h sr d1">I would love to hear from you.</h2>
-    <p class="contact-sub sr d2">Whether you have a question, want to learn more, or are simply curious — reach out at your own pace.</p>
+    <p class="contact-sub sr d2">Have a question or want to learn more? I'd love to hear from you.</p>
     <div class="contact-links sr d3">
       <a class="contact-link" href="mailto:melanielunliu@gmail.com">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="20" height="20"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
@@ -1430,7 +1566,7 @@ footer {
      SCRIPT
 ══════════════════════════════════════ -->
 <script>
-/* lock scroll on entry */
+/* ─ lock scroll on entry ─ */
 document.body.style.overflow = 'hidden';
 
 /* ─ breath phase label ─ */
@@ -1439,10 +1575,8 @@ const phases = [
   { text: 'hold',    ms: 2000 },
   { text: 'exhale',  ms: 6000 },
 ];
-
 let pi = 0;
 const lbl = document.getElementById('phaseLabel');
-
 (function cycle() {
   lbl.textContent = phases[pi].text;
   const dur = phases[pi].ms;
@@ -1474,6 +1608,150 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
 
 srEls.forEach(el => io.observe(el));
+
+/* ─ wellness wheel ─ */
+const wheelAreas = [
+  'Movement',
+  'Nutrition',
+  'Sleep & Rest',
+  'Stress',
+  'Emotional Health',
+  'Relationships',
+  'Work & Purpose',
+  'Personal Growth',
+];
+const wheelValues = new Array(8).fill(5);
+
+const sliderCol = document.getElementById('sliderCol');
+wheelAreas.forEach((label, i) => {
+  const row = document.createElement('div');
+  row.className = 'ws-item';
+  row.innerHTML = `
+    <div class="ws-label-row">
+      <span class="ws-label">${label}</span>
+      <span class="ws-val" id="wsv${i}">5</span>
+    </div>
+    <input type="range" class="ws-range" min="1" max="10" value="5"
+      oninput="updateWheel(${i}, this.value)">
+  `;
+  sliderCol.appendChild(row);
+});
+
+const canvas = document.getElementById('wellnessCanvas');
+const ctx = canvas.getContext('2d');
+const cx = canvas.width / 2, cy = canvas.height / 2;
+const maxR = Math.min(cx, cy) - 52;
+const N = 8;
+const angleStep = (Math.PI * 2) / N;
+
+function drawWheel() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // grid rings
+  for (let ring = 2; ring <= 10; ring += 2) {
+    ctx.beginPath();
+    for (let i = 0; i < N; i++) {
+      const a = i * angleStep - Math.PI / 2;
+      const r = (ring / 10) * maxR;
+      i === 0 ? ctx.moveTo(cx + r * Math.cos(a), cy + r * Math.sin(a))
+              : ctx.lineTo(cx + r * Math.cos(a), cy + r * Math.sin(a));
+    }
+    ctx.closePath();
+    ctx.strokeStyle = ring === 10 ? 'rgba(196,168,130,0.25)' : 'rgba(196,168,130,0.12)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  // ring number labels (2, 4, 6, 8, 10)
+  ctx.font = '9px "Outfit", system-ui, sans-serif';
+  ctx.fillStyle = 'rgba(160,120,88,0.45)';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  [2, 4, 6, 8, 10].forEach(v => {
+    const r = (v / 10) * maxR;
+    ctx.fillText(v, cx + 4, cy - r + 2);
+  });
+
+  // axes
+  for (let i = 0; i < N; i++) {
+    const a = i * angleStep - Math.PI / 2;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + maxR * Math.cos(a), cy + maxR * Math.sin(a));
+    ctx.strokeStyle = 'rgba(196,168,130,0.18)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  // filled polygon
+  ctx.beginPath();
+  for (let i = 0; i < N; i++) {
+    const a = i * angleStep - Math.PI / 2;
+    const r = (wheelValues[i] / 10) * maxR;
+    i === 0 ? ctx.moveTo(cx + r * Math.cos(a), cy + r * Math.sin(a))
+            : ctx.lineTo(cx + r * Math.cos(a), cy + r * Math.sin(a));
+  }
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(107,130,86,0.18)';
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(78,96,64,0.6)';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // dots on polygon vertices
+  for (let i = 0; i < N; i++) {
+    const a = i * angleStep - Math.PI / 2;
+    const r = (wheelValues[i] / 10) * maxR;
+    ctx.beginPath();
+    ctx.arc(cx + r * Math.cos(a), cy + r * Math.sin(a), 4, 0, Math.PI * 2);
+    ctx.fillStyle = '#4E6040';
+    ctx.fill();
+  }
+
+  // axis labels
+  ctx.font = '11px "Outfit", system-ui, sans-serif';
+  ctx.fillStyle = 'rgba(92,61,40,0.75)';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  for (let i = 0; i < N; i++) {
+    const a = i * angleStep - Math.PI / 2;
+    const lr = maxR + 34;
+    const lx = cx + lr * Math.cos(a);
+    const ly = cy + lr * Math.sin(a);
+    const parts = wheelAreas[i].split(' & ');
+    if (parts.length > 1) {
+      ctx.fillText(parts[0] + ' &', lx, ly - 7);
+      ctx.fillText(parts[1], lx, ly + 7);
+    } else {
+      ctx.fillText(wheelAreas[i], lx, ly);
+    }
+  }
+}
+
+function updateWheel(i, val) {
+  wheelValues[i] = parseInt(val);
+  document.getElementById('wsv' + i).textContent = val;
+  drawWheel();
+}
+
+function showWheelResult() {
+  // find lowest-scoring areas
+  const sorted = wheelAreas
+    .map((label, i) => ({ label, val: wheelValues[i] }))
+    .sort((a, b) => a.val - b.val);
+  const low = sorted.slice(0, 3).map(x => x.label);
+  const el = document.getElementById('wheelLowAreas');
+  el.textContent = 'Areas that may need attention: ' + low.join(', ');
+
+  const result = document.getElementById('wheelResult');
+  result.style.display = 'block';
+  requestAnimationFrame(() => {
+    result.style.opacity = '1';
+    result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+}
+
+drawWheel();
 </script>
 </body>
 </html>
