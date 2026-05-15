@@ -942,6 +942,93 @@ body::after {
   transform: scale(1.1);
 }
 
+.inquiry-form {
+  margin-top: 2.8rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inquiry-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inquiry-field label {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage-dk);
+  font-weight: 300;
+}
+
+.inquiry-field input,
+.inquiry-field textarea {
+  background: var(--offwhite);
+  border: 1px solid var(--parch-dk);
+  border-radius: 6px;
+  padding: 0.9rem 1.1rem;
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--brown-dp);
+  outline: none;
+  width: 100%;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inquiry-field input::placeholder,
+.inquiry-field textarea::placeholder {
+  color: var(--tan);
+}
+
+.inquiry-field input:focus,
+.inquiry-field textarea:focus {
+  border-color: var(--sage-md);
+  box-shadow: 0 0 0 3px rgba(107,130,86,0.12);
+}
+
+.inquiry-field textarea {
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.75;
+}
+
+.inquiry-note {
+  font-size: 0.78rem;
+  color: var(--brown-lt);
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  margin-top: -0.4rem;
+}
+
+.inquiry-submit {
+  align-self: center;
+  margin-top: 0.4rem;
+}
+
+.inquiry-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 2.8rem 0 2rem;
+  color: var(--tan);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.inquiry-divider::before,
+.inquiry-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--parch-dk);
+}
+
 /* ══════════════════════════════════════
    WOVEN SECTION (WHO + WHAT)
 ══════════════════════════════════════ */
@@ -1885,8 +1972,27 @@ footer {
   <div class="contact-inner">
     <span class="contact-eyebrow sr">Get in Touch</span>
     <h2 class="contact-h sr d1">I would love to hear from you.</h2>
-    <p class="contact-sub sr d2">Interested in working together? Send me a note with your name, email, and a little about what's drawing you to coaching. I personally read every message and will be in touch within 2–3 business days.</p>
-    <div class="contact-links sr d3">
+    <p class="contact-sub sr d2">Interested in working together? Fill out the form below — I personally read every message and will be in touch within 2–3 business days.</p>
+
+    <form class="inquiry-form sr d3" id="inquiryForm" novalidate>
+      <div class="inquiry-field">
+        <label for="inquiryName">Your Name</label>
+        <input type="text" id="inquiryName" placeholder="Jane Smith" required>
+      </div>
+      <div class="inquiry-field">
+        <label for="inquiryEmail">Your Email</label>
+        <input type="email" id="inquiryEmail" placeholder="jane@example.com" required>
+      </div>
+      <div class="inquiry-field">
+        <label for="inquiryReason">What's drawing you to coaching?</label>
+        <textarea id="inquiryReason" placeholder="Share a little about where you are and what you're hoping for..." required></textarea>
+      </div>
+      <p class="inquiry-note">Clicking send will open your email app with your message pre-filled.</p>
+      <button type="submit" class="btn-primary inquiry-submit">Send Message</button>
+    </form>
+
+    <div class="inquiry-divider sr d4">or reach me directly</div>
+    <div class="contact-links sr d4">
       <a class="contact-link" href="mailto:melanielunliu@gmail.com">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="20" height="20"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
         melanielunliu@gmail.com
@@ -2114,6 +2220,16 @@ function showWheelResult() {
 }
 
 resizeCanvas();
+
+document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name   = document.getElementById('inquiryName').value.trim();
+  const email  = document.getElementById('inquiryEmail').value.trim();
+  const reason = document.getElementById('inquiryReason').value.trim();
+  if (!name || !email || !reason) return;
+  const body = `Hi Melanie,\n\nName: ${name}\nEmail: ${email}\nReason for Interest in Coaching: ${reason}\n\nLooking forward to connecting!`;
+  window.location.href = `mailto:melanielunliu@gmail.com?subject=Coaching%20Inquiry&body=${encodeURIComponent(body)}`;
+});
 </script>
 </body>
 </html>
