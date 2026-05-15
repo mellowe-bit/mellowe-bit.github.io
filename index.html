@@ -208,6 +208,20 @@ body::after {
 
 .e-skip:hover { color: rgba(143,168,118,0.55); }
 
+.entry-brand {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 400;
+  color: rgba(196, 168, 130, 0.7);
+  letter-spacing: 0.06em;
+  margin-bottom: 2.8rem;
+}
+
+.entry-brand em {
+  font-style: normal;
+  color: rgba(143, 168, 118, 0.7);
+}
+
 /* ══════════════════════════════════════
    NAV
 ══════════════════════════════════════ */
@@ -332,6 +346,23 @@ body::after {
   align-items: center;
   gap: 0;
   padding: 4rem 0;
+}
+
+.hero-brand {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 400;
+  color: var(--brown-dp);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.6rem;
+  display: block;
+  opacity: 0;
+  animation: glideUp 1.1s var(--ease-slow) 0.1s forwards;
+}
+
+.hero-brand em {
+  font-style: normal;
+  color: var(--sage-dk);
 }
 
 .hero-tag {
@@ -1318,6 +1349,11 @@ footer {
   color: rgba(196, 168, 130, 0.45);
 }
 
+.foot-brand em {
+  font-style: normal;
+  color: rgba(143, 168, 118, 0.45);
+}
+
 .foot-copy {
   font-size: 0.6rem;
   letter-spacing: 0.1em;
@@ -1601,6 +1637,7 @@ footer {
      ENTRY
 ══════════════════════════════════════ -->
 <div id="entry">
+  <div class="entry-brand">mellow<em>emind</em></div>
   <p class="e-prompt">Take one breath before you enter.</p>
 
   <div class="orb-stage">
@@ -1640,6 +1677,7 @@ footer {
   <div class="hero-arc"></div>
 
   <div class="hero-inner">
+    <span class="hero-brand">mellow<em>emind</em></span>
     <span class="hero-tag">National Board Certified Health &amp; Wellness Coach</span>
 
     <h1>
@@ -1865,7 +1903,7 @@ footer {
      FOOTER
 ══════════════════════════════════════ -->
 <footer>
-  <div class="foot-brand">mellowemind</div>
+  <div class="foot-brand">mellow<em>emind</em></div>
   <p class="foot-copy">© 2025 mellowemind. A Personal Coaching Sanctuary.</p>
   <ul class="foot-links">
     <li><a href="mailto:melanielunliu@gmail.com">Email</a></li>
