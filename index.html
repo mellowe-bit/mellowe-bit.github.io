@@ -261,11 +261,11 @@ body::after {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 2.8rem;
+  gap: 2.4rem;
 }
 
 .nav-links a {
-  font-size: 0.65rem;
+  font-size: 0.63rem;
   font-weight: 300;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -292,6 +292,97 @@ body::after {
 }
 
 .nav-cta:hover { background: var(--brown-md); }
+
+/* hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 600;
+}
+
+.nav-hamburger span {
+  display: block;
+  height: 1.5px;
+  background: var(--brown-dp);
+  border-radius: 2px;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  transform-origin: center;
+}
+
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* mobile drawer */
+.nav-drawer {
+  position: fixed;
+  top: 72px;
+  left: 0; right: 0;
+  background: rgba(248, 243, 236, 0.97);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(196,168,130,0.18);
+  z-index: 490;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-drawer.open { max-height: 380px; }
+
+.nav-drawer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  padding: 1.2rem 0 1.6rem;
+}
+
+.nav-drawer-inner a {
+  font-size: 0.68rem;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brown-wm);
+  text-decoration: none;
+  padding: 0.85rem 2rem;
+  width: 100%;
+  text-align: center;
+  transition: color 0.25s, background 0.25s;
+}
+
+.nav-drawer-inner a:hover {
+  color: var(--sage-dk);
+  background: rgba(214, 229, 200, 0.3);
+}
+
+.nav-drawer-inner .drawer-cta {
+  margin-top: 0.6rem;
+  display: inline-block;
+  background: var(--sage-dk);
+  color: var(--offwhite);
+  padding: 0.7rem 2.2rem;
+  border-radius: 999px;
+  font-size: 0.63rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.3s;
+  width: auto;
+}
+
+.nav-drawer-inner .drawer-cta:hover {
+  background: var(--brown-md);
+  color: var(--offwhite);
+}
 
 /* ══════════════════════════════════════
    HERO
@@ -1628,7 +1719,12 @@ footer {
   .founder-grid  { grid-template-columns: 1fr; gap: 4rem; }
   .photo-col     { max-width: 380px; }
   .expect-grid   { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 860px) {
   .nav-links     { display: none; }
+  .nav-cta-wrap  { display: none; }
+  .nav-hamburger { display: flex; }
 }
 
 @media (max-width: 580px) {
@@ -1887,14 +1983,30 @@ footer {
 <nav id="nav">
   <div class="nav-brand">mellow<em>emind</em></div>
   <ul class="nav-links">
-    <li><a href="#assessment">Assessment</a></li>
     <li><a href="#offerings">Offerings</a></li>
-    <li><a href="#about">About</a></li>
     <li><a href="#faq">FAQ</a></li>
+    <li><a href="#assessment">Self Assessment</a></li>
+    <li><a href="#about">Bio</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact"><button class="nav-cta">Book a Call</button></a>
+  <div class="nav-cta-wrap">
+    <a href="#contact"><button class="nav-cta">Book a Call</button></a>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-drawer-inner">
+    <a href="#offerings"   onclick="closeDrawer()">Offerings</a>
+    <a href="#faq"         onclick="closeDrawer()">FAQ</a>
+    <a href="#assessment"  onclick="closeDrawer()">Self Assessment</a>
+    <a href="#about"       onclick="closeDrawer()">Bio</a>
+    <a href="#contact"     onclick="closeDrawer()">Contact</a>
+    <a href="#contact" class="drawer-cta" onclick="closeDrawer()">Book a Call</a>
+  </div>
+</div>
 
 <!-- ══════════════════════════════════════
      HERO
@@ -2469,6 +2581,24 @@ document.getElementById('inquiryForm').addEventListener('submit', function(e) {
   const body = `Hi Melanie,\n\nName: ${name}\nEmail: ${email}\nReason for Interest in Coaching: ${reason}\n\nLooking forward to connecting!`;
   window.location.href = `mailto:melanielunliu@gmail.com?subject=Coaching%20Inquiry&body=${encodeURIComponent(body)}`;
 });
+
+// Mobile nav
+const hamburger = document.getElementById('navHamburger');
+const drawer    = document.getElementById('navDrawer');
+
+function closeDrawer() {
+  hamburger.classList.remove('open');
+  drawer.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+}
+
+hamburger.addEventListener('click', () => {
+  const isOpen = drawer.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', String(isOpen));
+});
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
 
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(btn => {
