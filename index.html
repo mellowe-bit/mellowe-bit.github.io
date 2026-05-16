@@ -336,7 +336,7 @@ body::after {
   transition: max-height 0.42s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.nav-drawer.open { max-height: 380px; }
+.nav-drawer.open { max-height: 480px; }
 
 .nav-drawer-inner {
   display: flex;
@@ -1715,22 +1715,38 @@ footer {
 /* ══════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════ */
+@media (max-width: 1200px) {
+  .nav-links     { gap: 1.6rem; }
+}
+
+@media (max-width: 1080px) {
+  .nav-links     { display: none; }
+  .nav-cta-wrap  { display: none; }
+  .nav-hamburger { display: flex; }
+  .offer-grid    { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+}
+
 @media (max-width: 1000px) {
   .founder-grid  { grid-template-columns: 1fr; gap: 4rem; }
   .photo-col     { max-width: 380px; }
   .expect-grid   { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 860px) {
-  .nav-links     { display: none; }
-  .nav-cta-wrap  { display: none; }
-  .nav-hamburger { display: flex; }
+@media (max-width: 700px) {
+  .faq-section,
+  .offer-section,
+  .contact-section { padding: 6rem 5vw; }
+  .faq-cta-card    { padding: 2.2rem 1.6rem; }
+  .inquiry-form    { margin-top: 2rem; }
 }
 
 @media (max-width: 580px) {
   .expect-grid   { grid-template-columns: 1fr; }
   footer         { flex-direction: column; align-items: center; text-align: center; }
   .photo-badge   { bottom: -1.2rem; right: -0.6rem; }
+  .foot-links    { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .faq-h         { font-size: 1.55rem; }
+  .contact-inner { padding: 0 1rem; }
 }
 
 
