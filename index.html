@@ -2163,7 +2163,7 @@ footer {
           <li>Clarity on your next right step</li>
           <li>Recording + follow-up notes</li>
         </ul>
-        <a href="#contact" class="offer-cta">Book this session</a>
+        <a href="#contact" class="offer-cta" onclick="selectOffering('The Strategy Call — Single 60-min intensive ($125)')">Book this session</a>
       </div>
 
       <!-- Card 2 (featured) -->
@@ -2183,7 +2183,7 @@ footer {
           <li>Between-session voice note support</li>
           <li>Written session summary after each call</li>
         </ul>
-        <a href="#contact" class="offer-cta">Start the reset</a>
+        <a href="#contact" class="offer-cta" onclick="selectOffering('The Reset — 4-Week, 4 Sessions + Values Audit ($375)')">Start the reset</a>
       </div>
 
       <!-- Card 3 -->
@@ -2203,7 +2203,7 @@ footer {
           <li>Personalized resource library</li>
           <li>Written session summary after each call</li>
         </ul>
-        <a href="#contact" class="offer-cta">Apply for this container</a>
+        <a href="#contact" class="offer-cta" onclick="selectOffering('The Thought Partner — 12 Sessions + Full Retainer ($999)')">Apply for this container</a>
       </div>
 
     </div>
@@ -2615,6 +2615,12 @@ hamburger.addEventListener('click', () => {
 });
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+// Pre-fill inquiry form from offering CTA
+function selectOffering(name) {
+  const field = document.getElementById('inquiryReason');
+  if (field) field.value = `I'm interested in ${name}.\n\nA little about me and what I'm hoping for: `;
+}
 
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(btn => {
