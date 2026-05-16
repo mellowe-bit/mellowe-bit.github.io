@@ -865,6 +865,146 @@ body::after {
 }
 
 /* ══════════════════════════════════════
+   FAQ
+══════════════════════════════════════ */
+.faq-section {
+  padding: 9rem 6vw;
+  background: var(--offwhite);
+}
+
+.faq-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 4.5rem;
+}
+
+.faq-eyebrow {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--sage-dk);
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.faq-h {
+  font-family: var(--serif);
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-weight: 300;
+  color: var(--brown-dp);
+  line-height: 1.28;
+  margin-bottom: 1rem;
+}
+
+.faq-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--brown-wm);
+  font-weight: 300;
+}
+
+.faq-list {
+  border-top: 1px solid var(--parch-dk);
+  margin-bottom: 4.5rem;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--parch-dk);
+}
+
+.faq-q {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.65rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--brown-dp);
+  transition: color 0.25s ease;
+}
+
+.faq-q:hover { color: var(--sage-dk); }
+
+.faq-q[aria-expanded="true"] { color: var(--sage-dk); }
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  position: relative;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  background: currentColor;
+  border-radius: 2px;
+  top: 50%;
+  left: 50%;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.faq-icon::before { width: 12px; height: 1.5px; transform: translate(-50%, -50%); }
+.faq-icon::after  { width: 1.5px; height: 12px; transform: translate(-50%, -50%); }
+
+.faq-q[aria-expanded="true"] .faq-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+.faq-a {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-a-inner {
+  padding: 0 2rem 1.9rem 0;
+  font-size: 0.93rem;
+  line-height: 1.95;
+  color: var(--brown-wm);
+  font-weight: 300;
+}
+
+.faq-cta-card {
+  background: var(--sage-pl);
+  border-radius: 16px;
+  padding: 3.2rem 3rem;
+  text-align: center;
+}
+
+.faq-cta-heading {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--brown-dp);
+  margin-bottom: 0.55rem;
+}
+
+.faq-cta-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--sage-dk);
+  font-weight: 300;
+  margin-bottom: 2.2rem;
+}
+
+/* ══════════════════════════════════════
    CONTACT
 ══════════════════════════════════════ */
 .contact-section {
@@ -1750,6 +1890,7 @@ footer {
     <li><a href="#assessment">Assessment</a></li>
     <li><a href="#offerings">Offerings</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#contact"><button class="nav-cta">Book a Call</button></a>
@@ -1945,6 +2086,103 @@ footer {
 </section>
 
 <!-- ══════════════════════════════════════
+     FAQ
+══════════════════════════════════════ -->
+<section class="faq-section" id="faq">
+  <div class="faq-inner">
+
+    <div class="faq-header">
+      <span class="faq-eyebrow sr">Got Questions?</span>
+      <h2 class="faq-h sr d1">Everything you want to know<br>about wellness coaching</h2>
+      <p class="faq-sub sr d2"><em>No jargon. Just honest answers.</em></p>
+    </div>
+
+    <div class="faq-list sr d3">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          What is health &amp; wellness coaching?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a" role="region">
+          <div class="faq-a-inner">
+            Wellness coaching is a forward-focused partnership built around creating sustainable habits in sleep, nutrition, movement, and stress management. I draw on Motivational Interviewing, Positive Psychology, SMART goal-setting, and Behavior Change Science — not to tell you what to do, but to help you figure out what actually works for you. We build on what's already going well and design small, meaningful shifts that compound over time.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          How is coaching different from therapy?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a" role="region">
+          <div class="faq-a-inner">
+            Therapy explores the past and processes deeper emotional or psychological patterns. Coaching is focused on the present and future — building habits and helping you make them stick. Many of my clients work with both a therapist and a coach at the same time, and the two complement each other well. I'm not a licensed therapist and I don't diagnose or treat mental health conditions.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Who is this for?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a" role="region">
+          <div class="faq-a-inner">
+            High-achieving professionals, corporate leaders, and entrepreneurs whose health has quietly taken a backseat to performance. You're a great fit if you feel burned out, struggle with consistency, already know what to do but can't make it stick, or want a holistic approach — not another quick fix.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Why does a holistic approach matter?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a" role="region">
+          <div class="faq-a-inner">
+            Sleep, nutrition, movement, and stress are deeply interconnected — targeting one area in isolation rarely creates lasting change. When we look at the full picture, we can find the highest-leverage shifts for your specific lifestyle instead of applying a generic formula that doesn't fit how you actually live.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          What does a session actually look like?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a" role="region">
+          <div class="faq-a-inner">
+            Conversational, collaborative, and completely judgment-free. We review what's been working since we last spoke, identify real barriers that are getting in the way, and set one or two concrete actions to focus on before the next session. Sessions are virtual and run 45–60 minutes.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          What happens on the free discovery call?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a" role="region">
+          <div class="faq-a-inner">
+            A relaxed 30-minute conversation — no pitch, no pressure. We'll talk about where you are right now, what you've already tried, and what you most want to change. No cost, no commitment, and no hard sell. It's just a chance for us to see if working together feels like the right fit.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="faq-cta-card sr d4">
+      <p class="faq-cta-heading">Still have questions? Let's talk.</p>
+      <p class="faq-cta-sub">Your free 30-min call is zero pressure.</p>
+      <a href="#contact"><button class="btn-primary">Book a free call</button></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
      CLOSING CTA
 ══════════════════════════════════════ -->
 <section class="close-cta">
@@ -2014,6 +2252,7 @@ footer {
   <ul class="foot-links">
     <li><a href="mailto:melanielunliu@gmail.com">Email</a></li>
     <li><a href="https://www.instagram.com/mellowemind/" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Book a Call</a></li>
   </ul>
 </footer>
@@ -2229,6 +2468,21 @@ document.getElementById('inquiryForm').addEventListener('submit', function(e) {
   if (!name || !email || !reason) return;
   const body = `Hi Melanie,\n\nName: ${name}\nEmail: ${email}\nReason for Interest in Coaching: ${reason}\n\nLooking forward to connecting!`;
   window.location.href = `mailto:melanielunliu@gmail.com?subject=Coaching%20Inquiry&body=${encodeURIComponent(body)}`;
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq-q').forEach(b => {
+      b.setAttribute('aria-expanded', 'false');
+      b.nextElementSibling.style.maxHeight = null;
+    });
+    if (!isOpen) {
+      btn.setAttribute('aria-expanded', 'true');
+      btn.nextElementSibling.style.maxHeight = btn.nextElementSibling.scrollHeight + 'px';
+    }
+  });
 });
 </script>
 </body>
